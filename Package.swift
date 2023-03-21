@@ -4,13 +4,16 @@ import PackageDescription
 
 let package = Package(
     name: "NAnyID",
-    platforms: [.iOS(.v13), .macOS(.v10_15)],
+    platforms: [
+        .iOS(.v13),
+        .macOS(.v10_15)
+    ],
     products: [
         .library(name: "NAnyID", targets: ["NAnyID"]),
         .library(name: "NAnyIDTestHelpers", targets: ["NAnyIDTestHelpers"])
     ],
     dependencies: [
-        .package(url: "https://github.com/NikSativa/NSpry.git", .upToNextMajor(from: "1.2.10")),
+        .package(url: "git@github.com:NikSativa/NSpry.git", .upToNextMajor(from: "1.3.3")),
         .package(url: "git@github.com:Quick/Quick.git", .upToNextMajor(from: "6.1.0")),
         .package(url: "git@github.com:Quick/Nimble.git", .upToNextMajor(from: "11.2.1"))
     ],

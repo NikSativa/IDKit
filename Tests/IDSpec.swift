@@ -3,8 +3,8 @@ import Nimble
 import NSpry
 import Quick
 
-@testable import AnyID
-@testable import AnyIDTestHelpers
+@testable import NAnyID
+@testable import NAnyIDTestHelpers
 
 final class IDSpec: QuickSpec {
     private struct IDRepresentableUser: IDRepresentable, Hashable {

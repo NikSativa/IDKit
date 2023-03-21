@@ -1,4 +1,4 @@
-import AnyID
+import NAnyID
 import Foundation
 import NSpry
 
