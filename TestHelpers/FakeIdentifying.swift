@@ -1,5 +1,5 @@
-import NAnyID
 import Foundation
+import NAnyID
 import NSpry
 
 final class FakeIdentifying: Identifying, Spryable {

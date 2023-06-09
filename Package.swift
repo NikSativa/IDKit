@@ -6,16 +6,14 @@ let package = Package(
     name: "NAnyID",
     platforms: [
         .iOS(.v13),
-        .macOS(.v10_15)
+        .macOS(.v11)
     ],
     products: [
         .library(name: "NAnyID", targets: ["NAnyID"]),
         .library(name: "NAnyIDTestHelpers", targets: ["NAnyIDTestHelpers"])
     ],
     dependencies: [
-        .package(url: "git@github.com:NikSativa/NSpry.git", .upToNextMajor(from: "1.3.3")),
-        .package(url: "git@github.com:Quick/Quick.git", .upToNextMajor(from: "6.1.0")),
-        .package(url: "git@github.com:Quick/Nimble.git", .upToNextMajor(from: "11.2.1"))
+        .package(url: "git@github.com:NikSativa/NSpry.git", .upToNextMajor(from: "2.1.0"))
     ],
     targets: [
         .target(name: "NAnyID",
@@ -32,10 +30,7 @@ let package = Package(
                     dependencies: [
                         "NAnyID",
                         "NAnyIDTestHelpers",
-                        "Nimble",
-                        "Quick",
-                        "NSpry",
-                        .product(name: "NSpry_Nimble", package: "NSpry")
+                        "NSpry"
                     ],
                     path: "Tests")
     ]
