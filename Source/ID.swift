@@ -54,11 +54,19 @@ public extension ID where Value.RawIdentifier == AnyID {
     init(_ value: Int) {
         self.init(rawValue: .init(value))
     }
+
+    static var uuid: Self {
+        return .init(UUID().uuidString)
+    }
 }
 
 public extension ID where Value.RawIdentifier == String {
     init(_ value: String) {
         self.init(rawValue: value)
+    }
+
+    static var uuid: Self {
+        return .init(rawValue: UUID().uuidString)
     }
 }
 
