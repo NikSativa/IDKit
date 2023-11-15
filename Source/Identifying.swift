@@ -30,4 +30,29 @@ public extension Array where Element: Identifying {
             return original.id == id
         }
     }
+
+    subscript(_ id: ID<Element>) -> Element {
+        return first(with: id).unsafelyUnwrapped
+    }
+
+    @discardableResult
+    mutating func insert(_ element: Element) -> (inserted: Bool, old: Element?) {
+        if let ind = firstIndex(with: element.id) {
+            let old = self[ind]
+            self[ind] = element
+            return (true, old)
+        }
+        append(element)
+        return (false, nil)
+    }
+
+    @discardableResult
+    mutating func replace(_ element: Element) -> Bool {
+        if let ind = firstIndex(with: element.id) {
+            let old = self[ind]
+            self[ind] = element
+            return true
+        }
+        return false
+    }
 }
