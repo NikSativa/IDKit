@@ -35,24 +35,20 @@ public extension Array where Element: Identifying {
         return first(with: id).unsafelyUnwrapped
     }
 
-    @discardableResult
-    mutating func insert(_ element: Element) -> (inserted: Bool, old: Element?) {
-        if let ind = firstIndex(with: element.id) {
-            let old = self[ind]
-            self[ind] = element
-            return (true, old)
-        }
-        append(element)
-        return (false, nil)
+    subscript(safe id: ID<Element>) -> Element? {
+        return first(with: id)
     }
 
+    /// Secure storage
+    /// - return: element that was replaced by new
     @discardableResult
-    mutating func replace(_ element: Element) -> Bool {
+    mutating func insert(_ element: Element) -> Element? {
         if let ind = firstIndex(with: element.id) {
             let old = self[ind]
             self[ind] = element
-            return true
+            return old
         }
-        return false
+        append(element)
+        return nil
     }
 }
