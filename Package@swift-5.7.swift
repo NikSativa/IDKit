@@ -16,7 +16,7 @@ let package = Package(
         .library(name: "NAnyIDTestHelpers", targets: ["NAnyIDTestHelpers"])
     ],
     dependencies: [
-        .package(url: "git@github.com:NikSativa/NSpry.git", .upToNextMajor(from: "2.1.4"))
+        .package(url: "https://github.com/NikSativa/NSpry.git", .upToNextMajor(from: "2.1.4"))
     ],
     targets: [
         .target(name: "NAnyID",

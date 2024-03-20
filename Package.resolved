@@ -1,34 +1,32 @@
 {
-  "object": {
-    "pins": [
-      {
-        "package": "CwlCatchException",
-        "repositoryURL": "https://github.com/mattgallagher/CwlCatchException.git",
-        "state": {
-          "branch": null,
-          "revision": "3ef6999c73b6938cc0da422f2c912d0158abb0a0",
-          "version": "2.2.0"
-        }
-      },
-      {
-        "package": "CwlPreconditionTesting",
-        "repositoryURL": "https://github.com/mattgallagher/CwlPreconditionTesting.git",
-        "state": {
-          "branch": null,
-          "revision": "2ef56b2caf25f55fa7eef8784c30d5a767550f54",
-          "version": "2.2.1"
-        }
-      },
-      {
-        "package": "NSpry",
-        "repositoryURL": "git@github.com:NikSativa/NSpry.git",
-        "state": {
-          "branch": null,
-          "revision": "2bd07efd49af15a1afd1e44ea9212383c55d3a31",
-          "version": "2.1.4"
-        }
+  "pins" : [
+    {
+      "identity" : "cwlcatchexception",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/mattgallagher/CwlCatchException.git",
+      "state" : {
+        "revision" : "3ef6999c73b6938cc0da422f2c912d0158abb0a0",
+        "version" : "2.2.0"
       }
-    ]
-  },
-  "version": 1
+    },
+    {
+      "identity" : "cwlpreconditiontesting",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/mattgallagher/CwlPreconditionTesting.git",
+      "state" : {
+        "revision" : "2ef56b2caf25f55fa7eef8784c30d5a767550f54",
+        "version" : "2.2.1"
+      }
+    },
+    {
+      "identity" : "nspry",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/NikSativa/NSpry.git",
+      "state" : {
+        "revision" : "2bd07efd49af15a1afd1e44ea9212383c55d3a31",
+        "version" : "2.1.4"
+      }
+    }
+  ],
+  "version" : 2
 }
