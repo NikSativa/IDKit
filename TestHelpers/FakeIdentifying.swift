@@ -2,16 +2,16 @@ import Foundation
 import NAnyID
 import NSpry
 
-final class FakeIdentifying: Identifying, Spryable {
-    enum ClassFunction: String, StringRepresentable {
+public final class FakeIdentifying: Identifying, Spryable {
+    public enum ClassFunction: String, StringRepresentable {
         case empty
     }
 
-    enum Function: String, StringRepresentable {
+    public enum Function: String, StringRepresentable {
         case id
     }
 
-    var id: ID<FakeIdentifying> {
+    public var id: ID<FakeIdentifying> {
         return spryify()
     }
 }

@@ -1,7 +1,7 @@
 import Foundation
 import NAnyID
 
-extension ID {
+public extension ID {
     func testMake(rawValue: Value.RawIdentifier) -> Self {
         return .init(rawValue: rawValue)
     }
