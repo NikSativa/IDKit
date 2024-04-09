@@ -1,9 +1,9 @@
 import Foundation
-import NSpry
+import SpryKit
 import XCTest
 
-@testable import NAnyID
-@testable import NAnyIDTestHelpers
+@testable import IDKit
+@testable import IDKitTestHelpers
 
 final class IDRepresentableTests: XCTestCase {
     private struct CodableUser: Identifying, Equatable, Codable {

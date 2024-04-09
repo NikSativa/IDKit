@@ -1,5 +1,5 @@
 import Foundation
-import NAnyID
+import IDKit
 
 public extension ID {
     func testMake(rawValue: Value.RawIdentifier) -> Self {

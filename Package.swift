@@ -3,7 +3,7 @@
 import PackageDescription
 
 let package = Package(
-    name: "NAnyID",
+    name: "IDKit",
     platforms: [
         .iOS(.v13),
         .macOS(.v11),
@@ -13,34 +13,34 @@ let package = Package(
         .watchOS(.v6)
     ],
     products: [
-        .library(name: "NAnyID", targets: ["NAnyID"]),
-        .library(name: "NAnyIDTestHelpers", targets: ["NAnyIDTestHelpers"])
+        .library(name: "IDKit", targets: ["IDKit"]),
+        .library(name: "IDKitTestHelpers", targets: ["IDKitTestHelpers"])
     ],
     dependencies: [
-        .package(url: "https://github.com/NikSativa/NSpry.git", .upToNextMajor(from: "2.1.4"))
+        .package(url: "https://github.com/NikSativa/SpryKit.git", .upToNextMajor(from: "2.2.0"))
     ],
     targets: [
-        .target(name: "NAnyID",
+        .target(name: "IDKit",
                 dependencies: [
                 ],
                 path: "Source",
                 resources: [
                     .copy("../PrivacyInfo.xcprivacy")
                 ]),
-        .target(name: "NAnyIDTestHelpers",
+        .target(name: "IDKitTestHelpers",
                 dependencies: [
-                    "NAnyID",
-                    "NSpry"
+                    "IDKit",
+                    "SpryKit"
                 ],
                 path: "TestHelpers",
                 resources: [
                     .copy("../PrivacyInfo.xcprivacy")
                 ]),
-        .testTarget(name: "NAnyIDTests",
+        .testTarget(name: "IDKitTests",
                     dependencies: [
-                        "NAnyID",
-                        "NAnyIDTestHelpers",
-                        "NSpry"
+                        "IDKit",
+                        "IDKitTestHelpers",
+                        "SpryKit"
                     ],
                     path: "Tests")
     ]

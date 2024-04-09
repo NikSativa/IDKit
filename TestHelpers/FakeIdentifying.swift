@@ -1,6 +1,6 @@
 import Foundation
-import NAnyID
-import NSpry
+import IDKit
+import SpryKit
 
 public final class FakeIdentifying: Identifying, Spryable {
     public enum ClassFunction: String, StringRepresentable {
