@@ -6,7 +6,7 @@ import XCTest
 @testable import IDKitTestHelpers
 
 final class IDRepresentableTests: XCTestCase {
-    private struct CodableUser: Identifying, Equatable, Codable {
+    private struct CodableUser: IDRepresentable, Equatable, Codable {
         let id: ID<Self>
     }
 
