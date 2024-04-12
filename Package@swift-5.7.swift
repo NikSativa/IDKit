@@ -16,7 +16,7 @@ let package = Package(
         .library(name: "IDKitTestHelpers", targets: ["IDKitTestHelpers"])
     ],
     dependencies: [
-        .package(url: "https://github.com/NikSativa/SpryKit.git", .upToNextMajor(from: "2.1.4"))
+        .package(url: "https://github.com/NikSativa/SpryKit.git", .upToNextMajor(from: "2.2.2"))
     ],
     targets: [
         .target(name: "IDKit",
