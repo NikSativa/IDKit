@@ -56,7 +56,7 @@ public extension ID where Value.RawIdentifier == AnyID {
     }
 
     static var uuid: Self {
-        return .init(UUID().uuidString)
+        return .init(rawValue: .uuid)
     }
 }
 

@@ -93,3 +93,9 @@ extension AnyID: Comparable {
         }
     }
 }
+
+public extension AnyID {
+    static var uuid: Self {
+        return .init(UUID().uuidString)
+    }
+}
