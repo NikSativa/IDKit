@@ -15,8 +15,9 @@ struct User: Codable {
 }
 ```
 
-### ID
-`ID` represents an identifier as a strong type identifier.
+### TypedID
+`TypedID<...>` represents an identifier as a strong type identifier.
+**TID<...>** - abbreviation for easy using
 
 ### IDRepresentable
 Protocol can be used to define your custom identifier types.
@@ -29,14 +30,15 @@ struct User: IDRepresentable {
 }
 
 // but in any place you can identify your strong type id
-let identifier: ID<User> 
+let identifier: TID<User> 
 ```
 
-### Identifying
-It's like combine of ID and IDRepresentable protocols. It's required to have a property with name `id` of type `ID<Self>`.
+### IDContract
+It's like combine of TypedID/TID and IDRepresentable protocols. It's required to have a property with name `id` of type `TypedID<Self>`.
+The library automatically confirms the `Swift.Identifiable` protocol with the `id` property of the `TypedID<Self>` type.
 
 ```swift
-struct User: Identifying {
-    let id: ID<Self> <-- property is required
+struct User: IDContract {
+    let id: TypedID<Self> <-- property is required
 }
 ```

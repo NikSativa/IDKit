@@ -59,7 +59,7 @@ public struct AnyID: Hashable, Codable {
         return lhs.asString == rhs.asString
     }
 
-    public func asTypedID<I: IDRepresentable>() -> ID<I> where I.RawIdentifier == AnyID {
+    public func asTypedID<I: IDRepresentable>() -> TypedID<I> where I.RawIdentifier == AnyID {
         return .init(rawValue: self)
     }
 }

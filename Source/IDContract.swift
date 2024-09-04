@@ -3,24 +3,24 @@ import Foundation
 @available(*, deprecated, renamed: "IDContract", message: "Use IDContract instead of `Identifying`, which is not similar in name to Swift's `Identifiable` protocol.")
 public typealias Identifying = IDContract
 
-public protocol IDContract: IDRepresentable {
-    var id: ID<Self> { get }
+public protocol IDContract: IDRepresentable, Identifiable {
+    var id: TypedID<Self> { get }
 }
 
 public extension Sequence where Element: IDContract {
-    func contains(identifyingElement element: Element) -> Bool {
+    func contains(idContract element: Element) -> Bool {
         return contains { original in
             return original.id == element.id
         }
     }
 
-    func contains(id: ID<Element>) -> Bool {
+    func contains(id: TypedID<Element>) -> Bool {
         return contains { original in
             return original.id == id
         }
     }
 
-    func first(with id: ID<Element>) -> Element? {
+    func first(with id: TypedID<Element>) -> Element? {
         return first { original in
             return original.id == id
         }
@@ -28,17 +28,17 @@ public extension Sequence where Element: IDContract {
 }
 
 public extension Array where Element: IDContract {
-    func firstIndex(with id: ID<Element>) -> Self.Index? {
+    func firstIndex(with id: TypedID<Element>) -> Self.Index? {
         return firstIndex { original in
             return original.id == id
         }
     }
 
-    subscript(_ id: ID<Element>) -> Element {
+    subscript(_ id: TypedID<Element>) -> Element {
         return first(with: id).unsafelyUnwrapped
     }
 
-    subscript(safe id: ID<Element>) -> Element? {
+    subscript(safe id: TypedID<Element>) -> Element? {
         return first(with: id)
     }
 
