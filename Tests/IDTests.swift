@@ -3,14 +3,13 @@ import SpryKit
 import XCTest
 
 @testable import IDKit
-@testable import IDKitTestHelpers
 
 final class IDTests: XCTestCase {
     private struct IDRepresentableUser: IDRepresentable, Hashable {
         let namedId: ID<Self>
     }
 
-    private struct NamedUser: Identifying, Hashable {
+    private struct NamedUser: IDContract, Hashable {
         let id: ID<Self>
         let name: String
     }

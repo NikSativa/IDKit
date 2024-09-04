@@ -12,8 +12,7 @@ let package = Package(
         .watchOS(.v6)
     ],
     products: [
-        .library(name: "IDKit", targets: ["IDKit"]),
-        .library(name: "IDKitTestHelpers", targets: ["IDKitTestHelpers"])
+        .library(name: "IDKit", targets: ["IDKit"])
     ],
     dependencies: [
         .package(url: "https://github.com/NikSativa/SpryKit.git", .upToNextMajor(from: "2.2.3"))
@@ -26,19 +25,9 @@ let package = Package(
                 resources: [
                     .copy("../PrivacyInfo.xcprivacy")
                 ]),
-        .target(name: "IDKitTestHelpers",
-                dependencies: [
-                    "IDKit",
-                    "SpryKit"
-                ],
-                path: "TestHelpers",
-                resources: [
-                    .copy("../PrivacyInfo.xcprivacy")
-                ]),
         .testTarget(name: "IDKitTests",
                     dependencies: [
                         "IDKit",
-                        "IDKitTestHelpers",
                         "SpryKit"
                     ],
                     path: "Tests")

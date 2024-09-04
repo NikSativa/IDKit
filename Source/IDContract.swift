@@ -1,10 +1,13 @@
 import Foundation
 
-public protocol Identifying: IDRepresentable {
+@available(*, deprecated, renamed: "IDContract", message: "Use IDContract instead of `Identifying`, which is not similar in name to Swift's `Identifiable` protocol.")
+public typealias Identifying = IDContract
+
+public protocol IDContract: IDRepresentable {
     var id: ID<Self> { get }
 }
 
-public extension Sequence where Element: Identifying {
+public extension Sequence where Element: IDContract {
     func contains(identifyingElement element: Element) -> Bool {
         return contains { original in
             return original.id == element.id
@@ -24,7 +27,7 @@ public extension Sequence where Element: Identifying {
     }
 }
 
-public extension Array where Element: Identifying {
+public extension Array where Element: IDContract {
     func firstIndex(with id: ID<Element>) -> Self.Index? {
         return firstIndex { original in
             return original.id == id

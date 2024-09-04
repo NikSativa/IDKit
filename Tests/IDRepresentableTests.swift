@@ -3,7 +3,6 @@ import SpryKit
 import XCTest
 
 @testable import IDKit
-@testable import IDKitTestHelpers
 
 final class IDRepresentableTests: XCTestCase {
     private struct CodableUser: IDRepresentable, Equatable, Codable {
