@@ -42,3 +42,20 @@ struct User: IDContract {
     let id: TypedID<Self> <-- property is required
 }
 ```
+
+## Known issue: **SwiftUI+Preview** crash
+Xcode 15.4 is still crashing, waiting for a fix in Xcode 16.0... or in future versions from Apple 🤷‍♂️
+
+### Crash log 
+```
+== PREVIEW UPDATE ERROR:
+
+LinkDylibError: Failed to build RoutesView.swift
+
+Linking failed: linker command failed with exit code 1 (use -v to see invocation)
+
+ld: warning: search path '/Applications/Xcode.app/Contents/SharedFrameworks-iphonesimulator' not found
+ld: warning: Could not find or use auto-linked framework 'CoreAudioTypes': framework 'CoreAudioTypes' not found
+Undefined symbols for architecture arm64:
+  "nominal type descriptor for IDKit.TypedID", referenced from:
+```
