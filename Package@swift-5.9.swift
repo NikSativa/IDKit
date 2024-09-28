@@ -1,4 +1,4 @@
-// swift-tools-version:5.7
+// swift-tools-version:5.9
 // swiftformat:disable all
 import PackageDescription
 
@@ -8,6 +8,7 @@ let package = Package(
         .iOS(.v13),
         .macOS(.v11),
         .macCatalyst(.v13),
+        .visionOS(.v1),
         .tvOS(.v13),
         .watchOS(.v6)
     ],
@@ -15,7 +16,7 @@ let package = Package(
         .library(name: "IDKit", targets: ["IDKit"])
     ],
     dependencies: [
-        .package(url: "https://github.com/NikSativa/SpryKit.git", .upToNextMajor(from: "2.2.3"))
+        .package(url: "https://github.com/NikSativa/SpryKit.git", .upToNextMajor(from: "3.0.0"))
     ],
     targets: [
         .target(name: "IDKit",
@@ -23,7 +24,7 @@ let package = Package(
                 ],
                 path: "Source",
                 resources: [
-                    .copy("../PrivacyInfo.xcprivacy")
+                    .process("PrivacyInfo.xcprivacy")
                 ]),
         .testTarget(name: "IDKitTests",
                     dependencies: [

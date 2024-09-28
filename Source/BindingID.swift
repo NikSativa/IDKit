@@ -72,6 +72,28 @@ public struct BindingID<State: IDContract>: Identifiable {
     }
 }
 
+#if swift(>=6.0)
+public extension Binding {
+    static func fixID<T: IDContract & Sendable>(_ arr: Binding<[T]>) -> Binding<[BindingID<T>]>
+    where T.RawIdentifier == AnyID {
+        return arr.transform(\.asString)
+    }
+
+    static func fixID<T: IDContract & Sendable>(_ arr: Binding<[T]>) -> Binding<[BindingID<T>]>
+    where T.RawIdentifier == String {
+        return arr.transform {
+            return $0.rawValue
+        }
+    }
+
+    static func fixID<T: IDContract & Sendable>(_ arr: Binding<[T]>) -> Binding<[BindingID<T>]>
+    where T.RawIdentifier == Int {
+        return arr.transform {
+            return "\($0)"
+        }
+    }
+}
+#else
 public extension Binding {
     static func fixID<T: IDContract>(_ arr: Binding<[T]>) -> Binding<[BindingID<T>]>
     where T.RawIdentifier == AnyID {
@@ -92,20 +114,38 @@ public extension Binding {
         }
     }
 }
+#endif
 
 private extension Binding {
-    func transform<T>(_ idTransform: @escaping (TypedID<T>) -> String) -> Binding<[BindingID<T>]> where Self == Binding<[T]>, T: IDContract {
+    #if swift(>=6.0)
+    func transform<T>(_ idTransform: @escaping @Sendable (TypedID<T>) -> String) -> Binding<[BindingID<T>]>
+    where Self == Binding<[T]>, T: IDContract & Sendable {
         return .init(get: {
-            var result: [BindingID<T>] = []
-            for item in self {
-                result.append(BindingID(item, idTransform: idTransform))
-            }
-            return result
-        },
+                         var result: [BindingID<T>] = []
+                         for item in self {
+                             result.append(BindingID(item, idTransform: idTransform))
+                         }
+                         return result
+                     },
                      set: {
-            self.wrappedValue = $0.map(\.original)
-        })
+                         self.wrappedValue = $0.map(\.original)
+                     })
     }
+    #else
+    func transform<T>(_ idTransform: @escaping (TypedID<T>) -> String) -> Binding<[BindingID<T>]>
+    where Self == Binding<[T]>, T: IDContract {
+        return .init(get: {
+                         var result: [BindingID<T>] = []
+                         for item in self {
+                             result.append(BindingID(item, idTransform: idTransform))
+                         }
+                         return result
+                     },
+                     set: {
+                         self.wrappedValue = $0.map(\.original)
+                     })
+    }
+    #endif
 }
 
 #endif
