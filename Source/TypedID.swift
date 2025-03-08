@@ -102,3 +102,7 @@ extension TypedID: CustomStringConvertible where Value.RawIdentifier: CustomStri
         return rawValue.description
     }
 }
+
+#if swift(>=6.0)
+extension TypedID: Sendable where Value.RawIdentifier: Sendable {}
+#endif

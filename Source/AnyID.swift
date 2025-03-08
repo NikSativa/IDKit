@@ -99,3 +99,7 @@ public extension AnyID {
         return .init(UUID().uuidString)
     }
 }
+
+#if swift(>=6.0)
+extension AnyID: Sendable {}
+#endif
