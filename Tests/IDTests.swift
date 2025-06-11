@@ -1,7 +1,6 @@
 import Foundation
 import SpryKit
 import XCTest
-
 @testable import IDKit
 
 final class IDTests: XCTestCase {
