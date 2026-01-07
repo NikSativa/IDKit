@@ -122,8 +122,16 @@ private extension Binding {
     where Self == Binding<[T]>, T: IDContract & Sendable {
         return .init(get: {
                          var result: [BindingID<T>] = []
-                         for item in self {
-                             result.append(BindingID(item, idTransform: idTransform))
+                         if #available(iOS 15.0, *) {
+                             for item in self {
+                                 result.append(BindingID(item, idTransform: idTransform))
+                             }
+                         } else {
+                             for index in self.wrappedValue.indices {
+                                 let itemBinding = Binding<T>(get: { self.wrappedValue[index] },
+                                                              set: { self.wrappedValue[index] = $0 })
+                                 result.append(BindingID(itemBinding, idTransform: idTransform))
+                             }
                          }
                          return result
                      },
@@ -136,8 +144,16 @@ private extension Binding {
     where Self == Binding<[T]>, T: IDContract {
         return .init(get: {
                          var result: [BindingID<T>] = []
-                         for item in self {
-                             result.append(BindingID(item, idTransform: idTransform))
+                         if #available(iOS 15.0, *) {
+                             for item in self {
+                                 result.append(BindingID(item, idTransform: idTransform))
+                             }
+                         } else {
+                             for index in self.wrappedValue.indices {
+                                 let itemBinding = Binding<T>(get: { self.wrappedValue[index] },
+                                                              set: { self.wrappedValue[index] = $0 })
+                                 result.append(BindingID(itemBinding, idTransform: idTransform))
+                             }
                          }
                          return result
                      },
