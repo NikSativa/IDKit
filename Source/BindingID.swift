@@ -122,7 +122,7 @@ private extension Binding {
     where Self == Binding<[T]>, T: IDContract & Sendable {
         return .init(get: {
                          var result: [BindingID<T>] = []
-                         if #available(iOS 15.0, *) {
+                         if #available(iOS 15.0, macOS 12.0, macCatalyst 15.0, tvOS 15.0, watchOS 8.0, visionOS 1.0, *) {
                              for item in self {
                                  result.append(BindingID(item, idTransform: idTransform))
                              }
@@ -144,7 +144,7 @@ private extension Binding {
     where Self == Binding<[T]>, T: IDContract {
         return .init(get: {
                          var result: [BindingID<T>] = []
-                         if #available(iOS 15.0, *) {
+                         if #available(iOS 15.0, macOS 12.0, macCatalyst 15.0, tvOS 15.0, watchOS 8.0, visionOS 1.0, *) {
                              for item in self {
                                  result.append(BindingID(item, idTransform: idTransform))
                              }
